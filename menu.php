@@ -26,10 +26,9 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
     <div id="container">
       <div id="navigation"><?php require_once "include/navigation.php" ?></div>
       <div id="content">
-        Your tables are:
-<?php
-echo implode(", ", $tables);
-?>
+        <div id="choose_tables"><?php require_once "include/choose_tables.php" ?></div>
+        <br/>
+        <div id="choose_columns"><?php require_once "include/choose_columns.php" ?></div>
       </div>
     </div>
   </body>
