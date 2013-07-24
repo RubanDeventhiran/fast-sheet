@@ -20,12 +20,15 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
     <style type="text/css"></style>
 
     <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="js/the_query.js"></script>
   </head>
 
   <body>
     <div id="container">
       <div id="navigation"><?php require_once "include/navigation.php" ?></div>
       <div id="content">
+        <div id="the_query"></div>
+        <?php require_once "include/initialize.php" ?>
         <div id="choose_tables"><?php require_once "include/choose_tables.php" ?></div>
         <br/>
         <div id="choose_columns"><?php require_once "include/choose_columns.php" ?></div>
