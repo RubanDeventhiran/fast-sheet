@@ -133,7 +133,28 @@ function removeColumn(table, column) {
         if (the_query.tables[table] != undefined) {
             if (the_query.tables[table].columns != undefined) {
                 if (the_query.tables[table].columns[column] != undefined) {
-                    the_query.tables[table].columns[column] = false;
+                    the_query.tables[table].columns[column].present = false;
+                }
+            }
+        }
+    }
+
+    updateQuery();
+};
+
+function addColumnFunction(table, column, columnFunction) {
+    addColumn(table, column);
+    the_query.tables[table].columns[column].func = columnFunction;
+
+    updateQuery();
+};
+
+function removeColumnFunction(table, column) {
+    if (the_query.tables != undefined) {
+        if (the_query.tables[table] != undefined) {
+            if (the_query.tables[table].columns != undefined) {
+                if (the_query.tables[table].columns[column] != undefined) {
+                    delete the_query.tables[table].columns[column].func;
                 }
             }
         }
