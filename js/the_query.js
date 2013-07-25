@@ -16,6 +16,9 @@
  *     ...
  *   wheres (array of where conditions)
  *     where 1
+ *       lhs
+ *       op
+ *       rhs
  *     where 2
  *     where 3
  *     ...
@@ -85,7 +88,16 @@ function updateQuery() {
         var where_clauses = new Array();
         for (var where in the_query.wheres) {
             if (the_query.wheres[where]) {
-                where_clauses.push(the_query.wheres[where]);
+                var lhs = the_query.wheres[where].lhs;
+                var op = the_query.wheres[where].op;
+                var rhs = the_query.wheres[where].rhs;
+                if (getTableName(lhs) && !tablePresent(getTableName(lhs))) {
+                    continue;
+                }
+                if (getTableName(rhs) && !tablePresent(getTableName(rhs))) {
+                    continue;
+                }
+                where_clauses.push(lhs + ' ' + op + ' ' + rhs);
             }
         }
         if (where_clauses.length) {
@@ -98,13 +110,17 @@ function updateQuery() {
     if (the_query.order_bys) {
         var order_by_clauses = new Array();
         for (var i = 0; i < the_query.order_bys.length; i++) {
+            // Do not use unpresent tables
+            if (!tablePresent(getTableName(the_query.order_bys[i]))) {
+                continue;
+            }
             var order_by = the_query.order_bys[i];
             if (the_query.order_by_types[i]) {
                 order_by += ' ' + the_query.order_by_types[i];
             }
             order_by_clauses.push(order_by);
         }
-        if (the_query.order_bys.length) {
+        if (order_by_clauses.length) {
             elem += ' ORDER BY';
             elem += ' ' + order_by_clauses.join();
         }
@@ -119,6 +135,22 @@ function updateQuery() {
 }
 
 var the_query = new Array();
+
+/* Convenience function to get table from table.column */
+function getTableName(fullColumn) {
+    var index = fullColumn.indexOf('.');
+    if (index == -1) {
+        return undefined;
+    } else {
+        return fullColumn.substring(0, fullColumn.indexOf('.'));
+    }
+}
+
+function tablePresent(table) {
+    return the_query.tables
+        && the_query.tables[table]
+        && the_query.tables[table].present;
+}
 
 /*
  * Functions to update the query.
@@ -204,7 +236,13 @@ function editWhereClause(id, lhs, op, rhs)
        the_query.wheres = new Array();
     }
 
-    the_query.wheres[id] = (lhs + ' ' + op + ' ' + rhs);
+    if (the_query.wheres[id] == undefined) {
+        the_query.wheres[id] = new Array();
+    }
+
+    the_query.wheres[id].lhs = lhs;
+    the_query.wheres[id].op = op;
+    the_query.wheres[id].rhs = rhs;
 
     updateQuery();
 };
