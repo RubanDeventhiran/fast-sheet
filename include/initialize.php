@@ -9,6 +9,12 @@
   toggle_table('<?= $table ?>');
   <?php foreach ($columns[$table] as $column) { ?>
     toggle_column('<?= $table ?>', '<?= $column ?>');
+    toggle_columnfunction('<?= $table ?>', '<?= $column ?>');
+    for (var i = 0; i < createWhereClauseId; i++) {
+        edit_whereclause(i);
+    }
+    toggle_columnsort('<?= $table ?>', '<?= $column ?>');
+    edit_limit();
   <?php } ?>
 <?php } ?>
   };

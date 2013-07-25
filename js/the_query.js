@@ -24,6 +24,11 @@
  *     column 2
  *     column 3
  *     ...
+ *   order by order by types (array of asc/descs)
+ *     type 1
+ *     type 2
+ *     type 3
+ *     ...
  *   limit (integer)
  *
  * Note: we use the "present" property so that if we remove a table or
@@ -76,15 +81,36 @@ function updateQuery() {
     elem += ' ' + chosen_tables.join();
 
     /* Add where clauses */
-    var where_clauses = new Array();
-    for (var where in the_query.wheres) {
-        if (the_query.wheres[where]) {
-            where_clauses.push(the_query.wheres[where]);
+    if (the_query.wheres) {
+        var where_clauses = new Array();
+        for (var where in the_query.wheres) {
+            if (the_query.wheres[where]) {
+                where_clauses.push(the_query.wheres[where]);
+            }
+        }
+        if (where_clauses.length) {
+            elem += ' WHERE';
+            elem += ' ' + where_clauses.join(' AND ');
         }
     }
-    if (where_clauses.length) {
-        elem += ' WHERE';
-        elem += ' ' + where_clauses.join(' AND ');
+
+    /* Add order by and limit clauses */
+    if (the_query.order_bys) {
+        var order_by_clauses = new Array();
+        for (var i = 0; i < the_query.order_bys.length; i++) {
+            var order_by = the_query.order_bys[i];
+            if (the_query.order_by_types[i]) {
+                order_by += ' ' + the_query.order_by_types[i];
+            }
+            order_by_clauses.push(order_by);
+        }
+        if (the_query.order_bys.length) {
+            elem += ' ORDER BY';
+            elem += ' ' + order_by_clauses.join();
+        }
+    }
+    if (the_query.limit) {
+        elem += ' LIMIT ' + the_query.limit;
     }
 
     /* Edit the Query panel */
@@ -190,3 +216,39 @@ function removeWhereClause(id) {
 
     updateQuery();
 };
+
+function editColumnSort(table, column, type) {
+    if (the_query.order_bys == undefined) {
+        the_query.order_bys = new Array();
+        the_query.order_by_types = new Array();
+    }
+
+    /* Case for whether the column is already listed. */
+    var index = the_query.order_bys.indexOf(table + '.' + column);
+    if (index != -1) {
+        the_query.order_by_types[index] = type;
+    } else {
+        the_query.order_bys.push(table + '.' + column);
+        the_query.order_by_types.push(type);
+    }
+
+    updateQuery();
+};
+
+function removeColumnSort(table, column) {
+    if (the_query.order_bys) {
+        var index = the_query.order_bys.indexOf(table + '.' + column);
+        if (index != -1) {
+            the_query.order_bys.splice(index, 1);
+            the_query.order_by_types.splice(index, 1);
+        }
+    }
+
+    updateQuery();
+};
+
+function editLimit(limit) {
+    the_query.limit = limit;
+
+    updateQuery();
+}
