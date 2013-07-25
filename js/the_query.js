@@ -16,9 +16,6 @@
  *     ...
  *   wheres (array of where conditions)
  *     where 1
- *       lhs
- *       operator
- *       rhs
  *     where 2
  *     where 3
  *     ...
@@ -77,6 +74,18 @@ function updateQuery() {
     /* Select tables */
     elem += ' FROM';
     elem += ' ' + chosen_tables.join();
+
+    /* Add where clauses */
+    var where_clauses = new Array();
+    for (var where in the_query.wheres) {
+        if (the_query.wheres[where]) {
+            where_clauses.push(the_query.wheres[where]);
+        }
+    }
+    if (where_clauses.length) {
+        elem += ' WHERE';
+        elem += ' ' + where_clauses.join(' AND ');
+    }
 
     /* Edit the Query panel */
     elem += ';';
@@ -158,6 +167,25 @@ function removeColumnFunction(table, column) {
                 }
             }
         }
+    }
+
+    updateQuery();
+};
+
+function editWhereClause(id, lhs, op, rhs)
+{
+    if (the_query.wheres == undefined) {
+       the_query.wheres = new Array();
+    }
+
+    the_query.wheres[id] = (lhs + ' ' + op + ' ' + rhs);
+
+    updateQuery();
+};
+
+function removeWhereClause(id) {
+    if (the_query.wheres != undefined) {
+        delete the_query.wheres[id];
     }
 
     updateQuery();

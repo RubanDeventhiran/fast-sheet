@@ -32,6 +32,8 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
         <div id="choose_tables"><?php require_once "include/choose_tables.php" ?></div>
         <br/>
         <div id="choose_columns"><?php require_once "include/choose_columns.php" ?></div>
+        <br/>
+        <div id="choose_wheres"><?php require_once "include/choose_wheres.php" ?></div>
       </div>
     </div>
   </body>
