@@ -27,7 +27,7 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
     <div id="container">
       <div id="navigation"><?php require_once "include/navigation.php" ?></div>
       <div id="content">
-        <div id="the_query"></div>
+        <textarea rows="5" cols="80" id="the_query"></textarea>
         <?php require_once "include/initialize.php" ?>
         <div id="choose_tables"><?php require_once "include/choose_tables.php" ?></div>
         <br/>

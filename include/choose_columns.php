@@ -26,7 +26,7 @@ foreach ($tables as $table)
     foreach ($columns[$table] as $column)
     {
     ?>
-      <input type="checkbox" class="choose_column_option" id="col_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')"> <?= $column ?>
+      <input type="checkbox" class="choose_column_option" id="column_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')"> <?= $column ?>
       <br/>
     <?php
     }
