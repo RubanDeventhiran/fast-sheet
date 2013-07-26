@@ -18,4 +18,16 @@
   <?php } ?>
 <?php } ?>
   };
+
+  $(document).ready(function() {
+      unoSlider = $('#slider').unoSlider({
+          auto: false,
+      });
+      $('#slider_left').click(function() {
+          unoSlider.goBack();
+      });
+      $('#slider_right').click(function() {
+          unoSlider.goForward();
+      });
+  });
 </script>

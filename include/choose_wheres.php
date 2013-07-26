@@ -23,6 +23,7 @@ function createWhereClause(table, column) {
   elem += '</select>';
   elem += '<input id="whereclauserhs_' + createWhereClauseId + '" type="text" onkeyup="edit_whereclause(' + createWhereClauseId + ')">';
   elem += '<button type="button" onclick="remove_whereclause(' + createWhereClauseId + ')">Remove</button>';
+  elem += '</li>';
   $('#where_clauses').append(elem);
   edit_whereclause(createWhereClauseId);
   createWhereClauseId++;
@@ -63,4 +64,7 @@ foreach ($tables as $table)
 ?>
 
 <!-- List of where clauses -->
-<div id="where_clauses"><ul></ul></div>
+<div>
+  <ul id="where_clauses">
+  </ul>
+</div>
