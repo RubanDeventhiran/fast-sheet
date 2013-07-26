@@ -76,3 +76,11 @@ body,table {
 #navigation a:hover {
   color: #99ffff;
 }
+
+.cornerIcon {
+    border: 0;
+    float: left;
+    width: 34px;
+    height: 27px;
+    padding: 5px;
+}
