@@ -46,7 +46,7 @@ function updateQuery() {
     /* Selected tables and columns */
     var chosen_tables = new Array();
     var chosen_columns = new Array();
-    if (the_query.tables != undefined) {
+    if (the_query.tables) {
         for (var table in the_query.tables) {
             if (the_query.tables[table].present) {
                 chosen_tables.push(table);
@@ -76,12 +76,12 @@ function updateQuery() {
     if (chosen_columns.length == 0) {
         elem += ' *';
     } else {
-        elem += ' ' + chosen_columns.join();
+        elem += ' ' + chosen_columns.join(', ');
     }
 
     /* Select tables */
     elem += ' FROM';
-    elem += ' ' + chosen_tables.join();
+    elem += ' ' + chosen_tables.join(', ');
 
     /* Add where clauses */
     if (the_query.wheres) {
@@ -122,7 +122,7 @@ function updateQuery() {
         }
         if (order_by_clauses.length) {
             elem += ' ORDER BY';
-            elem += ' ' + order_by_clauses.join();
+            elem += ' ' + order_by_clauses.join(', ');
         }
     }
     if (the_query.limit) {
@@ -156,11 +156,11 @@ function tablePresent(table) {
  * Functions to update the query.
  */
 function addTable(table) {
-    if (the_query.tables == undefined) {
+    if (the_query.tables === undefined) {
         the_query.tables = new Array();
     }
 
-    if (the_query.tables[table] == undefined) {
+    if (the_query.tables[table] === undefined) {
         the_query.tables[table] = new Array();
     }
 
@@ -170,8 +170,8 @@ function addTable(table) {
 };
 
 function removeTable(table) {
-    if (the_query.tables != undefined) {
-        if (the_query.tables[table] != undefined) {
+    if (the_query.tables) {
+        if (the_query.tables[table]) {
             the_query.tables[table].present = false;
         }
     }
@@ -182,11 +182,11 @@ function removeTable(table) {
 function addColumn(table, column) {
     addTable(table);
 
-    if (the_query.tables[table].columns == undefined) {
+    if (the_query.tables[table].columns === undefined) {
         the_query.tables[table].columns = new Array();
     }
 
-    if (the_query.tables[table].columns[column] == undefined) {
+    if (the_query.tables[table].columns[column] === undefined) {
         the_query.tables[table].columns[column] = new Array();
     }
 
@@ -196,10 +196,10 @@ function addColumn(table, column) {
 };
 
 function removeColumn(table, column) {
-    if (the_query.tables != undefined) {
-        if (the_query.tables[table] != undefined) {
-            if (the_query.tables[table].columns != undefined) {
-                if (the_query.tables[table].columns[column] != undefined) {
+    if (the_query.tables) {
+        if (the_query.tables[table]) {
+            if (the_query.tables[table].columns) {
+                if (the_query.tables[table].columns[column]) {
                     the_query.tables[table].columns[column].present = false;
                 }
             }
@@ -217,10 +217,10 @@ function addColumnFunction(table, column, columnFunction) {
 };
 
 function removeColumnFunction(table, column) {
-    if (the_query.tables != undefined) {
-        if (the_query.tables[table] != undefined) {
-            if (the_query.tables[table].columns != undefined) {
-                if (the_query.tables[table].columns[column] != undefined) {
+    if (the_query.tables) {
+        if (the_query.tables[table]) {
+            if (the_query.tables[table].columns) {
+                if (the_query.tables[table].columns[column]) {
                     delete the_query.tables[table].columns[column].func;
                 }
             }
@@ -232,11 +232,11 @@ function removeColumnFunction(table, column) {
 
 function editWhereClause(id, lhs, op, rhs)
 {
-    if (the_query.wheres == undefined) {
+    if (the_query.wheres === undefined) {
        the_query.wheres = new Array();
     }
 
-    if (the_query.wheres[id] == undefined) {
+    if (the_query.wheres[id] === undefined) {
         the_query.wheres[id] = new Array();
     }
 
@@ -248,7 +248,7 @@ function editWhereClause(id, lhs, op, rhs)
 };
 
 function removeWhereClause(id) {
-    if (the_query.wheres != undefined) {
+    if (the_query.wheres) {
         delete the_query.wheres[id];
     }
 
@@ -256,7 +256,7 @@ function removeWhereClause(id) {
 };
 
 function editColumnSort(table, column, type) {
-    if (the_query.order_bys == undefined) {
+    if (the_query.order_bys === undefined) {
         the_query.order_bys = new Array();
         the_query.order_by_types = new Array();
     }

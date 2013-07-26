@@ -19,6 +19,7 @@
 <?php } ?>
   };
 
+  // Prepare the slider
   $(document).ready(function() {
       unoSlider = $('#slider').unoSlider({
           auto: false,

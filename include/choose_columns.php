@@ -35,10 +35,10 @@ foreach ($tables as $table)
 ?>
   <div class="table_class_<?= $table ?>">
   <h4>Table <?= $table ?></h4>
-    <?php
+<?php
     foreach ($columns[$table] as $column)
     {
-    ?>
+?>
       <input type="checkbox" class="choose_column_option" id="column_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')"> <?= $column ?>
 
       <span id="columnfunctiondiv_<?= $table ?>__<?= $column ?>">
@@ -50,9 +50,9 @@ foreach ($tables as $table)
       </span>
 
       <br/>
-    <?php
+<?php
     }
-    ?>
+?>
   </div>
 <?php
 }

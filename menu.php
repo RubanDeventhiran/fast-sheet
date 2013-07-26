@@ -29,7 +29,7 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
     <div id="container">
       <div id="navigation"><?php require_once "include/navigation.php" ?></div>
       <div id="content">
-        <textarea rows="5" cols="80" id="the_query"></textarea>
+        <textarea readonly rows="5" cols="80" id="the_query"></textarea>
         <?php require_once "include/initialize.php" ?>
         <div id="buttons">
           <button id="slider_left">left</button>
