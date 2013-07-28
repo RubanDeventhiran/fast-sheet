@@ -17,6 +17,7 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
     <script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="js/unoSlider.js"></script>
     <script type="text/javascript" src="js/the_query.js"></script>
+    <script type="text/javascript" src="js/report.js"></script>
   </head>
   <body>
     <!--BEGIN EVERYTHING -->

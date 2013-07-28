@@ -10,32 +10,28 @@
  */
 ?>
 
-<h2>Select tables:</h2>
-
-<script type="text/javascript">
-  function toggle_table(table) {
-    if ($('#table_' + table).attr('checked')) {
-      $('.table_class_' + table).show();
-      addTable(table);
-    } else {
-      $('.table_class_' + table).hide();
-      removeTable(table);
-    }
-  };
-</script>
-
+<style type="text/css">
 <?php
 foreach ($tables as $table)
 {
 ?>
-  <style type="text/css">
-    .table_class_<?= $table ?> {
-      display: none;
-    }
-  </style>
+    .table_class_<?= $table ?> { display: none; }
+<?php
+}
+?>
+</style>
 
+<div class="report_section_title">Select tables</div>
+<div class="report_section_description">Click on the tables you wish to view data from.</div>
+
+<div class="tables_list_section">
+<?php
+foreach ($tables as $table)
+{
+?>
   <input type="checkbox" id="table_<?= $table ?>" onclick="toggle_table('<?= $table ?>')"> <?= $table ?>
   <br/>
 <?php
 }
 ?>
+</div>
