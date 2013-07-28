@@ -83,8 +83,21 @@ function edit_limit() {
   editLimit(obj.value);
 };
 
+function edit_query(editable) {
+    document.getElementById('the_query').readOnly = !editable;
+    if (editable) {
+        $('#edit_button').hide();
+    } else {
+        $('#edit_button').show();
+    }
+};
+
+function put_query_in_form() {
+    $('#query_field').val($('#the_query').val());
+};
+
 var slideIndex;
-var slideNames = ['Tables', 'Columns', 'Where Clauses', 'Misc.'];
+var slideNames = ['Tables', 'Columns', 'Where Clauses', 'Misc.', 'CONFIRM'];
 // Prepare the slider
 function setSliderLinkText() {
     if (slideIndex) {
@@ -96,8 +109,10 @@ function setSliderLinkText() {
     if (slideIndex != slideNames.length - 1) {
         $('#slider_right').css('visibility', 'visible');
         $('#right_slider_link').text(slideNames[slideIndex + 1]);
+        $('#edit_button_container').hide();
     } else {
         $('#slider_right').css('visibility', 'hidden');
+        $('#edit_button_container').show();
     }
 };
 
@@ -110,6 +125,7 @@ $(document).ready(function() {
             slideIndex--;
             unoSlider.goTo(slideIndex + 1);
             setSliderLinkText();
+            edit_query(false);
         }
     });
     $('#slider_right').click(function() {

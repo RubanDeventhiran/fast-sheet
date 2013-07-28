@@ -48,6 +48,9 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
           </div>
           <div id="query_container">
             <textarea readonly id="the_query"></textarea>
+            <div id="edit_button_container">
+              <button type="button" id="edit_button" onclick="edit_query(true)">Edit Query</button>
+            </div>
           </div>
           <div id="slider">
             <ul>
@@ -55,6 +58,9 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
               <li><div id="choose_columns"><?php require_once "include/choose_columns.php" ?></div></li>
               <li><div id="choose_wheres"><?php require_once "include/choose_wheres.php" ?></div></li>
               <li><div id="choose_specials"><?php require_once "include/choose_specials.php" ?></div></li>
+              <li>
+                <div id="confirm_query"><?php require_once "include/confirm_query.php" ?></div>
+              </li>
             </ul>
           </div>
         <!-- END BANNER AREA PLACEHOLDER -->

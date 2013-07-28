@@ -65,7 +65,7 @@ function updateQuery() {
 
     /* Query is empty if no tables are selected. */
     if (chosen_tables.length == 0) {
-        $('#the_query').html('');
+        $('#the_query').val('');
         return;
     }
 
@@ -131,7 +131,7 @@ function updateQuery() {
 
     /* Edit the Query panel */
     elem += ';';
-    $('#the_query').html(elem);
+    $('#the_query').val(elem);
 }
 
 var the_query = new Array();
