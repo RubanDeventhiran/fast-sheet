@@ -145,6 +145,12 @@ img {
     color:#0096D6;
 }
 
+#brand {
+    display:inline-block;
+    background-position:0 0;
+    float:right;
+}
+
 #body {
     height:400px;
     min-height:500px;

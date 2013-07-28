@@ -10,6 +10,7 @@
       <div class="row_fst30"> </div>
       <!-- BEGIN MAIN NAV MENU -->
       <div class="row_lst70">
+        <img id="brand" src="images/brand.png">
         <ul class="main_nav">
           <li class="header_titles home_link">
             <a class="header_link " href="index.php">Home<br clear="none" /></a>
