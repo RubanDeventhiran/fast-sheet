@@ -2,7 +2,7 @@
     /* Removed width:300px */
 }
 .unoSlider ul,.unoSlider .sliderView{
-    min-height:999px /* Changed from 150px */
+    min-height:400px /* Changed from 150px */
 }
 .unoSlider ul{
     list-style:none;
