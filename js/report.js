@@ -83,15 +83,42 @@ function edit_limit() {
   editLimit(obj.value);
 };
 
+var slideIndex;
+var slideNames = ['Tables', 'Columns', 'Where Clauses', 'Misc.'];
 // Prepare the slider
+function setSliderLinkText() {
+    if (slideIndex) {
+        $('#slider_left').css('visibility', 'visible');
+        $('#left_slider_link').text(slideNames[slideIndex - 1]);
+    } else {
+        $('#slider_left').css('visibility', 'hidden');
+    }
+    if (slideIndex != slideNames.length - 1) {
+        $('#slider_right').css('visibility', 'visible');
+        $('#right_slider_link').text(slideNames[slideIndex + 1]);
+    } else {
+        $('#slider_right').css('visibility', 'hidden');
+    }
+};
+
 $(document).ready(function() {
     unoSlider = $('#slider').unoSlider({
         auto: false,
     });
     $('#slider_left').click(function() {
-        unoSlider.goBack();
+        if (slideIndex) {
+            slideIndex--;
+            unoSlider.goTo(slideIndex + 1);
+            setSliderLinkText();
+        }
     });
     $('#slider_right').click(function() {
-        unoSlider.goForward();
+        if (slideIndex != slideNames.length - 1) {
+            slideIndex++;
+            unoSlider.goTo(slideIndex + 1);
+            setSliderLinkText();
+        }
     });
+    slideIndex = 0;
+    setSliderLinkText();
 });

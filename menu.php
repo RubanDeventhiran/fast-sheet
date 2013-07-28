@@ -38,10 +38,10 @@ $columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("verti
             <!--BEGIN CAROUSEL CONTROLS -->
             <div id="slider_left">
               <div id="left_slider_arrow"> </div>
-              <div id="left_slider_link" class="slider_link home_link"><a href="#">Previous</a></div>
+              <div class="slider_link home_link"><a id="left_slider_link" href="#"></a></div>
             </div>
             <div id="slider_right">
-              <div id="right_slider_link" class="slider_link home_link"><a href="#">Next</a></div>
+              <div class="slider_link home_link"><a id="right_slider_link" href="#"></a></div>
               <div id="right_slider_arrow"> </div>
             </div>
             <!-- END CAROUSEL CONTROLS -->
