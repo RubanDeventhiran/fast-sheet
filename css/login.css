@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+background: url(../img/backgrounds/loginback.jpg) no-repeat center center fixed;
+background-size: auto; 
+-webkit-background-size: contain;
+-moz-background-size: contain;
+-o-background-size: contain;
+background-size: contain;
+}
+h2{
+margin: 0.8em 0 0.5em 0;
+    color: #333;
+    font-weight: normal;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 36px;
+    line-height: 40px;
+    counter-increment: section-1;
+    counter-reset: section-2 section-3 section-4;
+
+}
+.login{
+background-color: rgba(255, 255, 255, 0.7);	
+height:270px; 
+padding: 15px;
+-moz-box-shadow: 0 0 15px 5px #00592B;
+-webkit-box-shadow: 0 0 15px 5px #00592B;
+box-shadow: 0 0 15px 5px #00592B;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+border:0px solid #D2D2D2;
+}
+
+.inputs input[type=text], .inputs input[type=password], .inputs input[type=text]:hover, .inputs input[type=password]:hover{
+background: #f1f1f1 url(../img/userpasssmall.gif) no-repeat;
+padding: 20px 15px 15px 40px;
+margin: 0 0 20px 0;
+/*width: 300px; /* 353 + 2 + 45 = 400 */
+border: 1px solid #ccc;
+font-size:14px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+-moz-box-shadow: 0 0.5px 0.5px #ccc inset;
+-webkit-box-shadow: 0 0.5px 0.5px #ccc inset;
+box-shadow: 0 0.5px 0.5px #ccc inset;
+}
+
+
+
+.username{
+background-position: 0px -2px !important;
+}
+
+
+
+.password{
+background-position: 0px -37px !important;
+}
+
+.inputs input[type=text]:focus, .inputs input[type=password]:focus{
+background: #f1f1f1 url(../img/userpasssmall.gif) no-repeat;
+background-color: #fff;
+outline: none;
+
+}
+
+/*--------------------*/
+
+.actions{
+margin: 0px 0 0 0;
+}
+
+
+fieldset
+{
+border: 0;
+padding: 0;
+margin: 0;
+}
+
+.dotworld{
+background-image:url(images/dotworldmap.gif);
+background-repeat:no-repeat;
+height:489px;
+}
+
+.loginblock
+{
+background-color: #fff;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
+background-image: -webkit-linear-gradient(top, #fff, #eee);
+background-image: -moz-linear-gradient(top, #fff, #eee);
+background-image: -ms-linear-gradient(top, #fff, #eee);
+background-image: -o-linear-gradient(top, #fff, #eee);
+background-image: linear-gradient(top, #fff, #eee); 
+padding: 15px;
+-webkit-box-shadow: 0 10px 15px -3px #626262;
+-moz-box-shadow: 0 10px 15px -3px #626262;
+box-shadow: 0 10px 15px -3px #626262;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+border:1px solid #D2D2D2;
+height:100px; 
+
+}
