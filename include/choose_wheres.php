@@ -19,7 +19,7 @@ foreach ($tables as $table)
   <div class="columns_list_section table_class_<?= $table ?>">
   <h4>Table <?= $table ?></h4>
 <?php
-foreach ($columns[$table] as $column)
+foreach (getColumns($table) as $column)
 {
 ?>
     <?= $column ?><button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')">+</button>

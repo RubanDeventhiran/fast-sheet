@@ -1,12 +1,4 @@
 <?php
-/* 
- * Thao:
- * Using the variables $_POST["username"] and $_POST["password"],
- * store the tables (array) into $tables and table columns (map from tables to
- * arrays) into $columns.
- */
-$tables = array($_POST["username"] . "1", $_POST["username"] . "2");
-$columns = array($tables[0] => array("col1", "col2"), $tables[1] => array("vertica", "hp"));
 ?>
 
 <html dir="ltr" lang="en-us">
