@@ -20,7 +20,6 @@
     <script type='text/javascript' src='js/plugins/jquery/jquery-migrate-1.1.1.min.js'></script>
     <script type='text/javascript' src='js/plugins/other/excanvas.js'></script>
     <script type='text/javascript' src='js/plugins/other/jquery.mousewheel.min.js'></script>
-    <script type='text/javascript' src='js/plugins/uniform/jquery.uniform.min.js'></script>
     <script type='text/javascript' src='js/plugins.js'></script>
     <script type='text/javascript' src='js/charts.js'></script>
     <script type='text/javascript' src='js/actions.js'></script>

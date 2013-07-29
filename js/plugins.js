@@ -12,8 +12,6 @@ $(document).ready(function(){
                                 'speedIn'       : 600, 
                                 'speedOut'      : 200
                             });
-    // Uniform
-        $("input:checkbox, input:radio").not('input.ibtn').uniform();    
     // Select2
     if($(".select").length > 0){
         $(".select").select2();
