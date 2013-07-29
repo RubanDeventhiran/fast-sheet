@@ -11,6 +11,7 @@
 <div class="report_section_title">Select where clauses</div>
 <div class="report_section_description">Click on a button to apply a restriction on the data in that column</div>
 
+<span>
 <div class="tables_list_section">
 <?php
 foreach ($tables as $table)
@@ -22,12 +23,12 @@ foreach ($tables as $table)
 foreach (getColumns($table) as $column)
 {
 ?>
-    <div class="row-fluid">
-        <div class="span4">
+    <div class="column_list_item">
+        <div class="float">
             <?= $column ?>
         </div>
-        <div class="span8">
-            <button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')">+</button>
+        <div class="float">
+            <button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')" class="extra_item">Add Restriction...</button>
         </div>
     </div>
 <?php
@@ -38,6 +39,7 @@ foreach (getColumns($table) as $column)
 }
 ?>
 </div>
+</span>
 
 <!-- List of where clauses -->
 <div id="where_clauses">

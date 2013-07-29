@@ -20,12 +20,12 @@ foreach ($tables as $table)
 foreach (getColumns($table) as $column)
 {
 ?>
-    <div class="row-fluid">
-        <div class="span4">
-            <input type="checkbox" class="choose_column_option" id="column_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')"> <?= $column ?>
+    <div class="column_list_item">
+        <div class="float">
+            <input type="checkbox" class="choose_column_option" id="column_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')" \> <?= $column ?>
         </div>
-        <div id="columnfunctiondiv_<?= $table ?>__<?= $column ?>" class="span8">
-            <select id="columnfunction_<?= $table ?>__<?= $column ?>" onchange="toggle_columnfunction('<?= $table ?>', '<?= $column ?>')">
+        <div id="columnfunctiondiv_<?= $table ?>__<?= $column ?>" class="float">
+            <select id="columnfunction_<?= $table ?>__<?= $column ?>" onchange="toggle_columnfunction('<?= $table ?>', '<?= $column ?>')" class="extra_item">
                 <option>Optional function...</option>
                 <option>sum</option>
                 <option>avg</option>

@@ -10,6 +10,8 @@
 <form id="confirm_query_form" onsubmit="put_query_in_form()" action="results.php" method="post">
   <fieldset>
     <input type="hidden" id="query_field" name="query_field" value="" />
-    <input type="submit" name="submit" value="Submit Query!" \>
+    <div class="submit-button">
+        <input type="submit" name="submit" value="Submit Query!" \>
+    </div>
   </fieldset>
 </form>

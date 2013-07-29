@@ -53,6 +53,15 @@ img {
     border:0;
 }
 
+span {
+    display:inline-block;
+}
+
+.float {
+    float:left;
+    padding-right:6px;
+}
+
 #body {
     background:none repeat scroll 0 0 #fff;
     padding-bottom:23px;
@@ -68,87 +77,10 @@ img {
     margin:auto;
 }
 
-#top_margin {
-    background:#fff;
-    height:auto;
-    min-height:22px;
-    color:#000;
-}
-
 #content {
     width:1000px;
     display:block;
     margin:auto;
-}
-
-#header {
-    padding-bottom:15px;
-    height:100px;
-}
-
-.col_30_70 .fst30 {
-    min-width:30%;
-    display:inline-block;
-    float:left;
-}
-
-.col_30_70 .lst70 {
-    min-width:70%;
-    display:inline-block;
-    float:left;
-}
-
-.logo {
-    display:block;
-    background-position:0 0;
-    margin-top:10px;
-    margin-right:12px;
-    margin-left:9px;
-}
-
-.row_30_70 .row_fst30 {
-    min-height:30%;
-}
-
-.row_30_70 .row_lst70 {
-    min-height:70%;
-}
-
-#header ul.main_nav {
-    display:table;
-    margin-top:2px;
-}
-
-#header ul.main_nav .header_titles {
-    border-left:0;
-    z-index:15;
-    display:block;
-    position:relative;
-    min-height:34px;
-    margin:0;
-    padding-left:8px;
-    padding-right:54px;
-}
-
-#header ul.main_nav .header_link {
-    height:36px;
-    overflow:hidden;
-    font-size:20px;
-}
-
-.home_link a {
-    color:#000;
-    font-weight:700;
-}
-
-.home_link a:hover, .home_link a:focus {
-    color:#0096D6;
-}
-
-#brand {
-    display:inline-block;
-    background-position:0 0;
-    float:right;
 }
 
 #body {
@@ -156,6 +88,14 @@ img {
     min-height:500px;
     min-width:950px;
     margin-left:26px;
+}
+
+.text-field {
+    max-width:250px;
+}
+
+.submit-button {
+    padding-top: 10px;
 }
 
 #query_container {
@@ -240,19 +180,6 @@ img {
     font-size:18px;
 }
 
-.footer_menu {
-    float:right;
-}
-
-.pipe {
-    margin:0 2px 0 4px;
-}
-
-#bottom_margin {
-    background-color:#f2f2f2;
-    min-height:60px;
-}
-
 .report_section_title {
     font-size:24px;
     padding:5px;
@@ -260,7 +187,8 @@ img {
 
 .report_section_description {
     font-size:14px;
-    padding:5px;
+    padding-top:25px;
+    padding-bottom:5px;
 }
 
 .tables_list_section {
@@ -268,5 +196,38 @@ img {
 }
 
 .columns_list_section {
+    padding-top:6px;
+    padding-right:16px;
+    min-width:80px;
+    float:left;
+}
+
+.table_list_item, .column_list_item {
+    min-height:24px;
+    display:block;
+}
+
+.extra_item {
+    height:24px;
+    padding:0px;
+}
+
+.where-clause {
     padding:6px;
+    min-height:24px;
+    display:block;
+}
+
+.where-lhs, .where-rhs {
+    max-width:80px;
+    max-height:24px;
+    float:left;
+    padding:3px;
+}
+
+.where-op, .where-remove {
+    max-width:50px;
+    max-height:24px;
+    float:left;
+    padding:3px;
 }

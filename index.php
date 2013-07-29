@@ -68,14 +68,16 @@
                                 <input type="hidden" name="submitted" id="submitted" value="1" \>
 
                                 <label for="username" >Username:</label>
-                                <input type="text" name="username" id="username" maxlength="50" />
+                                <input type="text" name="username" id="username" maxlength="50" class="text-field"/>
                                 <br/>
 
                                 <label for="password" >Password:</label>
-                                <input type="password" name="password" id="password" maxlength="50" \>
+                                <input type="password" name="password" id="password" maxlength="50" class="text-field"\>
                                 <br/>
 
-                                <input type="submit" name="submit" value="Create New Report" \>
+                                <div class="submit-button">
+                                    <input type="submit" name="submit" value="Create New Report"\>
+                                </div>
                             </fieldset>
                         </form>
                     </div>
