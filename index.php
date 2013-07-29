@@ -59,24 +59,26 @@
                     <div class="icon">
                         <span class="ico-layout-7"></span>
                     </div>
-                    <h1>Sign In</h1>
+                    <h1>Sign In<small>Enter your username and password.</small></h1>
                 </div>
                 <div class="row-fluid" id="signin_form">
-                    <form id="signin" action="menu.php" method="post" accept-charset="UTF-8">
-                        <fieldset>
-                            <input type="hidden" name="submitted" id="submitted" value="1" \>
+                    <div class="span10">
+                        <form id="signin" action="menu.php" method="post" accept-charset="UTF-8">
+                            <fieldset>
+                                <input type="hidden" name="submitted" id="submitted" value="1" \>
 
-                            <label for="username" >Username:</label>
-                            <input type="text" name="username" id="username" maxlength="50" />
-                            <br/>
+                                <label for="username" >Username:</label>
+                                <input type="text" name="username" id="username" maxlength="50" />
+                                <br/>
 
-                            <label for="password" >Password:</label>
-                            <input type="password" name="password" id="password" maxlength="50" \>
-                            <br/>
+                                <label for="password" >Password:</label>
+                                <input type="password" name="password" id="password" maxlength="50" \>
+                                <br/>
 
-                            <input type="submit" name="submit" value="Create New Report" \>
-                        </fieldset>
-                    </form>
+                                <input type="submit" name="submit" value="Create New Report" \>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

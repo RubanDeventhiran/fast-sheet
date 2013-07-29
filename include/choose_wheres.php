@@ -22,8 +22,14 @@ foreach ($tables as $table)
 foreach (getColumns($table) as $column)
 {
 ?>
-    <?= $column ?><button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')">+</button>
-    <br/>
+    <div class="row-fluid">
+        <div class="span4">
+            <?= $column ?>
+        </div>
+        <div class="span8">
+            <button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')">+</button>
+        </div>
+    </div>
 <?php
 }
 ?>
@@ -34,7 +40,5 @@ foreach (getColumns($table) as $column)
 </div>
 
 <!-- List of where clauses -->
-<div>
-  <ul id="where_clauses">
-  </ul>
+<div id="where_clauses">
 </div>

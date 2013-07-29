@@ -35,16 +35,22 @@ function toggle_columnfunction(table, column) {
 var createWhereClauseId = 0; // to generate unique ids
 function createWhereClause(table, column) {
   var elem = '';
-  elem += '<li id="whereclause_' + createWhereClauseId + '">';
-  elem += '<input id="whereclauselhs_' + createWhereClauseId + '" type="text" onkeyup="edit_whereclause(' + createWhereClauseId + ')">';
-  elem += '<select id="whereclauseop_' + createWhereClauseId + '" onchange="edit_whereclause(' + createWhereClauseId + ')">';
-  elem += '  <option>=</option>';
-  elem += '  <option>&lt;</option>';
-  elem += '  <option>&gt;</option>';
-  elem += '</select>';
-  elem += '<input id="whereclauserhs_' + createWhereClauseId + '" type="text" onkeyup="edit_whereclause(' + createWhereClauseId + ')">';
-  elem += '<button type="button" onclick="remove_whereclause(' + createWhereClauseId + ')">Remove</button>';
-  elem += '</li>';
+  elem += '<div id="whereclause_' + createWhereClauseId + '" class="row-fluid">';
+  elem += '<div class="span4">';
+  elem += '  <input id="whereclauselhs_' + createWhereClauseId + '" type="text" onkeyup="edit_whereclause(' + createWhereClauseId + ')">';
+  elem += '</div>';
+  elem += '<div class="span4">';
+  elem += '  <select id="whereclauseop_' + createWhereClauseId + '" onchange="edit_whereclause(' + createWhereClauseId + ')">';
+  elem += '    <option>=</option>';
+  elem += '    <option>&lt;</option>';
+  elem += '    <option>&gt;</option>';
+  elem += '  </select>';
+  elem += '</div>';
+  elem += '<div class="span4">';
+  elem += '  <input id="whereclauserhs_' + createWhereClauseId + '" type="text" onkeyup="edit_whereclause(' + createWhereClauseId + ')">';
+  elem += '  <button type="button" onclick="remove_whereclause(' + createWhereClauseId + ')">Remove</button>';
+  elem += '</div>';
+  elem += '</div>';
   $('#where_clauses').append(elem);
   edit_whereclause(createWhereClauseId);
   createWhereClauseId++;

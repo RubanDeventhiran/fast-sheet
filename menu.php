@@ -69,30 +69,32 @@
                 </div>
                 <?php require_once "include/initialize.php" ?>
                 <div class="row-fluid">
-                    <div id="controls">
-                        <div id="slider_left">
-                            <div id="left_slider_arrow"> </div>
-                            <div class="slider_link home_link"><a id="left_slider_link" href="#"></a></div>
+                    <div class="span10">
+                        <div id="controls">
+                            <div id="slider_left">
+                                <div id="left_slider_arrow"> </div>
+                                <div class="slider_link home_link"><a id="left_slider_link" href="#"></a></div>
+                            </div>
+                            <div id="slider_right">
+                                <div class="slider_link home_link"><a id="right_slider_link" href="#"></a></div>
+                                <div id="right_slider_arrow"> </div>
+                            </div>
                         </div>
-                        <div id="slider_right">
-                            <div class="slider_link home_link"><a id="right_slider_link" href="#"></a></div>
-                            <div id="right_slider_arrow"> </div>
+                        <div id="query_container">
+                            <textarea readonly id="the_query"></textarea>
+                            <div id="edit_button_container">
+                                <button type="button" id="edit_button" onclick="edit_query(true)">Edit Query</button>
+                            </div>
                         </div>
-                    </div>
-                    <div id="query_container">
-                        <textarea readonly id="the_query"></textarea>
-                        <div id="edit_button_container">
-                            <button type="button" id="edit_button" onclick="edit_query(true)">Edit Query</button>
+                        <div id="slider">
+                            <ul>
+                                <li><div id="choose_tables"><?php require_once "include/choose_tables.php" ?></div></li>
+                                <li><div id="choose_columns"><?php require_once "include/choose_columns.php" ?></div></li>
+                                <li><div id="choose_wheres"><?php require_once "include/choose_wheres.php" ?></div></li>
+                                <li><div id="choose_specials"><?php require_once "include/choose_specials.php" ?></div></li>
+                                <li><div id="confirm_query"><?php require_once "include/confirm_query.php" ?></div></li>
+                            </ul>
                         </div>
-                    </div>
-                    <div id="slider">
-                        <ul>
-                            <li><div id="choose_tables"><?php require_once "include/choose_tables.php" ?></div></li>
-                            <li><div id="choose_columns"><?php require_once "include/choose_columns.php" ?></div></li>
-                            <li><div id="choose_wheres"><?php require_once "include/choose_wheres.php" ?></div></li>
-                            <li><div id="choose_specials"><?php require_once "include/choose_specials.php" ?></div></li>
-                            <li><div id="confirm_query"><?php require_once "include/confirm_query.php" ?></div></li>
-                        </ul>
                     </div>
                 </div>
             </div>
