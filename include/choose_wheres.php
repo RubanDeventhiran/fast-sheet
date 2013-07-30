@@ -39,10 +39,10 @@ foreach (getColumns($table) as $column)
 }
 ?>
 </div>
-<div>
+</span>
+<div id="tables_list_section">
     <button type="button" onclick="createWhereClause()" class="extra_item">Arbitrary restriction...</button>
 </div>
-</span>
 
 <!-- List of where clauses -->
 <div id="where_clauses">

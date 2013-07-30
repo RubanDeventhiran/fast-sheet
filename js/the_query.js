@@ -46,6 +46,7 @@ function updateQuery() {
     /* Selected tables and columns */
     var chosen_tables = new Array();
     var chosen_columns = new Array();
+    var agg_columns = new Array();
     if (the_query.tables) {
         for (var table in the_query.tables) {
             if (the_query.tables[table].present) {
@@ -53,7 +54,7 @@ function updateQuery() {
                 for (var column in the_query.tables[table].columns) {
                     if (the_query.tables[table].columns[column].present) {
                         if (the_query.tables[table].columns[column].func) {
-                            chosen_columns.push(the_query.tables[table].columns[column].func + '(' + table + '.' + column + ')');
+                            agg_columns.push(the_query.tables[table].columns[column].func + '(' + table + '.' + column + ')');
                         } else {
                             chosen_columns.push(table + '.' + column);
                         }
@@ -73,10 +74,10 @@ function updateQuery() {
 
     /* Select columns */
     elem += 'SELECT';
-    if (chosen_columns.length == 0) {
+    if (chosen_columns.length + agg_columns.length == 0) {
         elem += ' *';
     } else {
-        elem += ' ' + chosen_columns.join(', ');
+        elem += ' ' + agg_columns.concat(chosen_columns).join(', ');
     }
 
     /* Select tables */
@@ -127,6 +128,12 @@ function updateQuery() {
     }
     if (the_query.limit) {
         elem += ' LIMIT ' + the_query.limit;
+    }
+
+    /* Add automatic group by clauses if necessary */
+    if (chosen_columns.length * agg_columns.length > 0) {
+        elem += ' GROUP BY';
+        elem += ' ' + chosen_columns.join(', ');
     }
 
     /* Edit the Query panel */

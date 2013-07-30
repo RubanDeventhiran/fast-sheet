@@ -55,7 +55,6 @@ function createWhereClause(table, column) {
   elem += '</div>';
   $('#where_clauses').append(elem);
   if (table !== undefined) {
-      alert('here');
       $('#whereclauselhs_' + createWhereClauseId).val(table + '.' + column);
   }
   edit_whereclause(createWhereClauseId);
