@@ -28,7 +28,7 @@ foreach (getColumns($table) as $column)
             <?= $column ?>
         </div>
         <div class="float">
-            <button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')" class="extra_item">Add Restriction...</button>
+            <button type="button" onclick="createWhereClause('<?= $table ?>', '<?= $column ?>')" class="extra_item">Restrict...</button>
         </div>
     </div>
 <?php
@@ -38,6 +38,9 @@ foreach (getColumns($table) as $column)
 <?php
 }
 ?>
+</div>
+<div>
+    <button type="button" onclick="createWhereClause()" class="extra_item">Arbitrary restriction...</button>
 </div>
 </span>
 
