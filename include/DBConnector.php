@@ -23,7 +23,7 @@ function getTables($schema = 'public', $dsn = "VerticaDSNunixodbc", $username = 
     $tableList = array();
     if(errortrap_odbc($conn,$sql, $params)){
         while($row = odbc_fetch_array($sql) ) {
-            array_push($tableList, $row['table_name']);
+            array_push($tableList, strtoupper($row['table_name']));
         }
     }
 
@@ -48,8 +48,8 @@ function getColumns($table_name){
 
     $column_names = array();
     foreach($columns as $column){
-        if($column['table_name'] == $table_name){
-            array_push($column_names, $column['column_name']);
+        if(strcasecmp($column['table_name'], $table_name) == 0){
+            array_push($column_names, strtoupper($column['column_name']));
         }
     }
     return $getColumns_memoized[$table_name] = $column_names;
