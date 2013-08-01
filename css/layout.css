@@ -90,6 +90,39 @@ span {
     margin-left:26px;
 }
 
+#signin {
+    display:block;
+    width:300px;
+    margin:16px auto;
+    padding:22px;
+    background-color:#f8f9fa;
+    border:1px solid #eeefef;
+}
+
+#signin label {
+    text-transform: uppercase;
+    color:#2a2e36;
+    font-size:12px;
+}
+
+#signin input [type="text"], input[type="password"] {
+    border:1px solid #d9dbdd;
+    outline:none;
+}
+
+#signin .login_button {
+    border:none;
+    background-color:#009ad7;
+    color:white;
+    padding:8px;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    background-image:url("../images/continue_arrow.png");
+    background-position:right center;
+    padding-right:36px;
+    background-repeat:no-repeat;
+}
+
 .text-field {
     max-width:250px;
 }

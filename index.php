@@ -59,24 +59,26 @@
                     <div class="icon">
                         <span class="ico-layout-7"></span>
                     </div>
-                    <h1>Sign In<small>Enter your username and password.</small></h1>
+                    <h1>Sign In<small>Enter your username and password</small></h1>
                 </div>
                 <div class="row-fluid" id="signin_form">
                     <div class="span10">
                         <form id="signin" action="menu.php" method="post" accept-charset="UTF-8">
                             <fieldset>
-                                <input type="hidden" name="submitted" id="submitted" value="1" \>
+                                <p>
+                                <label for="username" >Username</label>
+                                <input type="text" name="username" id="username" maxlength="50"\>
+                                </p>
 
-                                <label for="username" >Username:</label>
-                                <input type="text" name="username" id="username" maxlength="50" class="text-field"/>
-                                <br/>
+                                <p>
+                                <label for="password" >Password</label>
+                                <input type="password" name="password" id="password" maxlength="50"\>
+                                </p>
 
-                                <label for="password" >Password:</label>
-                                <input type="password" name="password" id="password" maxlength="50" class="text-field"\>
-                                <br/>
+                                <p><a href="javascript:alert('Too bad.');">Forgot password</a></p>
 
                                 <div class="submit-button">
-                                    <input type="submit" name="submit" value="Create New Report"\>
+                                    <input type="submit" name="submit" value="Create New Report" class="login_button"\>
                                 </div>
                             </fieldset>
                         </form>
