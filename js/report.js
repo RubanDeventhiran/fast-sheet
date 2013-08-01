@@ -16,19 +16,24 @@ function toggle_table(table) {
 function toggle_column(table, column) {
   if ($('#column_' + table + '__' + column).attr('checked')) {
     $('#columnfunctiondiv_' + table + '__' + column).show();
+    $('.column_class_' + table + '__' + column).show();
     addColumn(table, column);
   } else {
     $('#columnfunctiondiv_' + table + '__' + column).hide();
     removeColumn(table, column);
+    $('.column_class_' + table + '__' + column).hide();
   }
 };
 
 function toggle_columnfunction(table, column) {
   var obj = document.getElementById('columnfunction_' + table + '__' + column);
   if (obj.selectedIndex) {
-      addColumnFunction(table, column, obj.options[obj.selectedIndex].text);
+      var func = obj.options[obj.selectedIndex].text;
+      addColumnFunction(table, column, func);
+      $('#selected_column_' + table + '__' + column).text(func + '(' + column + ')');
   } else {
       removeColumnFunction(table, column);
+      $('#selected_column_' + table + '__' + column).text(column);
   }
 };
 

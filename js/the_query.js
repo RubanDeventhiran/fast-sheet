@@ -107,17 +107,30 @@ function updateQuery() {
         }
     }
 
+    /* Add automatic group by clauses if necessary */
+    if (chosen_columns.length * agg_columns.length > 0) {
+        elem += ' GROUP BY';
+        elem += ' ' + chosen_columns.join(', ');
+    }
+
     /* Add order by and limit clauses */
     if (the_query.order_bys) {
         var order_by_clauses = new Array();
         for (var i = 0; i < the_query.order_bys.length; i++) {
             // Do not use unpresent tables
-            if (!tablePresent(getTableName(the_query.order_bys[i]))) {
+            var tableName = the_query.order_bys[i].table;
+            var columnName = the_query.order_bys[i].column;
+            if (!columnPresent(tableName, columnName)) {
                 continue;
             }
-            var order_by = the_query.order_bys[i];
-            if (the_query.order_by_types[i]) {
-                order_by += ' ' + the_query.order_by_types[i];
+            var func = the_query.tables[tableName].columns[columnName].func;
+            if (func) {
+                var order_by = func + '(' + tableName + '.' + columnName + ')';
+            } else {
+                var order_by = tableName + '.' + columnName;
+            }
+            if (the_query.order_bys[i].type) {
+                order_by += ' ' + the_query.order_bys[i].type;
             }
             order_by_clauses.push(order_by);
         }
@@ -128,12 +141,6 @@ function updateQuery() {
     }
     if (the_query.limit) {
         elem += ' LIMIT ' + the_query.limit;
-    }
-
-    /* Add automatic group by clauses if necessary */
-    if (chosen_columns.length * agg_columns.length > 0) {
-        elem += ' GROUP BY';
-        elem += ' ' + chosen_columns.join(', ');
     }
 
     /* Edit the Query panel */
@@ -149,15 +156,31 @@ function getTableName(fullColumn) {
     if (index == -1) {
         return undefined;
     } else {
-        return fullColumn.substring(0, fullColumn.indexOf('.'));
+        return fullColumn.substring(0, index);
     }
 }
+
+function getColumnName(fullColumn) {
+    var index = fullColumn.indexOf('.');
+    if (index == -1) {
+        return undefined;
+    } else {
+        return fullColumn.substring(index + 1);
+    }
+};
 
 function tablePresent(table) {
     return the_query.tables
         && the_query.tables[table]
         && the_query.tables[table].present;
-}
+};
+
+function columnPresent(table, column) {
+    return tablePresent(table)
+        && the_query.tables[table].columns
+        && the_query.tables[table].columns[column]
+        && the_query.tables[table].columns[column].present;
+};
 
 /*
  * Functions to update the query.
@@ -268,13 +291,17 @@ function editColumnSort(table, column, type) {
         the_query.order_by_types = new Array();
     }
 
-    /* Case for whether the column is already listed. */
-    var index = the_query.order_bys.indexOf(table + '.' + column);
-    if (index != -1) {
-        the_query.order_by_types[index] = type;
+    var i;
+    for (i = 0; i < the_query.order_bys.length; i++) {
+        if (the_query.order_bys[i].table == table
+            && the_query.order_bys[i].column == column) {
+            break;
+        }
+    }
+    if (i < the_query.order_bys.length) {
+        the_query.order_bys[i].type = type;
     } else {
-        the_query.order_bys.push(table + '.' + column);
-        the_query.order_by_types.push(type);
+        the_query.order_bys.push({table: table, column: column, type: type});
     }
 
     updateQuery();
@@ -282,10 +309,14 @@ function editColumnSort(table, column, type) {
 
 function removeColumnSort(table, column) {
     if (the_query.order_bys) {
-        var index = the_query.order_bys.indexOf(table + '.' + column);
-        if (index != -1) {
-            the_query.order_bys.splice(index, 1);
-            the_query.order_by_types.splice(index, 1);
+        for (i = 0; i < the_query.order_bys.length; i++) {
+            if (the_query.order_bys[i].table == table
+                    && the_query.order_bys[i].column == column) {
+                break;
+            }
+        }
+        if (i < the_query.order_bys.length) {
+            the_query.order_bys.splice(i, 1);
         }
     }
 
