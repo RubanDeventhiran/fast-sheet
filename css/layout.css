@@ -110,25 +110,24 @@ span {
     outline:none;
 }
 
-#signin .login_button {
+#signin .login_button, .restrict-button, #edit_button, #confirm_query_form .submit-query-button {
     border:none;
     background-color:#009ad7;
     color:white;
+    background-position:right center;
     padding:8px;
+    padding-right:34px;
+    background-repeat:no-repeat;
+}
+
+#signin .login_button {
     border-radius:5px;
     -webkit-border-radius:5px;
     background-image:url("../images/continue_arrow.png");
-    background-position:right center;
-    padding-right:36px;
-    background-repeat:no-repeat;
 }
 
 .text-field {
     max-width:250px;
-}
-
-.submit-button {
-    padding-top: 10px;
 }
 
 #query_container {
@@ -144,6 +143,7 @@ span {
     outline:none;
     resize:none;
     overflow:auto;
+    margin:auto;
 }
 
 #controls {
@@ -159,23 +159,29 @@ span {
 
 #slider_left {
     float:left;
-    padding-top:20px;
-    min-width:160px;
+    padding:20px;
 }
 
 #slider_right {
     float:right;
-    padding-top:20px;
-    min-width:160px;
+    padding:20px;
 }
 
 .slider_link {
     font-size:24px;
     float:left;
-    padding-left:10px;
-    padding-right:10px;
-    padding-top:5px;
-    max-width:100px;
+    padding-left:15px;
+    padding-right:15px;
+    padding-top:10px;
+    width:200px;
+}
+
+.left_link {
+    text-align:left;
+}
+
+.right_link {
+    text-align:right;
 }
 
 #left_slider_arrow {
@@ -264,3 +270,30 @@ span {
     float:left;
     padding:3px;
 }
+
+.restrict-button {
+    padding-left:2px;
+    padding-top:2px;
+    padding-bottom:2px;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    background-image:url("../images/add_restriction.png");
+}
+
+#edit_button {
+    padding-left:6px;
+    padding-top:6px;
+    padding-bottom:6px;
+    margin:4px;
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    background-image:url("../images/edit_query.png");
+}
+
+#confirm_query_form .submit-query-button {
+    margin:10px;
+    border-radius:8px;
+    -webkit-border-radius:8px;
+    background-image:url("../images/continue_arrow.png");
+}
+
