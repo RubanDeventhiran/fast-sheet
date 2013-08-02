@@ -50,6 +50,7 @@
             </div>
         </div>
         <div class="body">
+            <span style="margin:auto;"><img width="350px" src="images/fastsheet.png"></span>
             <ul class="navigation">
                 <li>
                     <a href="index.php" class="button">
