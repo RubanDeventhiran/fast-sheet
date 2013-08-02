@@ -6,6 +6,15 @@
  */
 ?>
 
+<style type="text/css">
+<?php foreach ($tables as $table) { ?>
+<?php foreach (getColumns($table) as $column) { ?>
+    .column_class_<?= $table ?>__<?= $column ?> { display:none }
+    #columnfunctiondiv_<?= $table ?>__<?= $column ?> { display:none }
+<?php } ?>
+<?php } ?>
+</style>
+
 <div class="report_section_title">Select columns</div>
 <div class="report_section_description">Click on the columns from which you wish to view data.</div>
 
@@ -20,9 +29,9 @@ foreach ($tables as $table)
 foreach (getColumns($table) as $column)
 {
 ?>
-    <div class="column_list_item">
-        <div class="float">
-            <input type="checkbox" class="choose_column_option" id="column_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')" \> <?= $column ?>
+    <div class="column_list_item"><span>
+        <div class="selection_option float" id="column_<?= $table ?>__<?= $column ?>" onclick="toggle_column('<?= $table ?>', '<?= $column ?>')">
+            <?= $column ?>
         </div>
         <div id="columnfunctiondiv_<?= $table ?>__<?= $column ?>" class="float">
             <select id="columnfunction_<?= $table ?>__<?= $column ?>" onchange="toggle_columnfunction('<?= $table ?>', '<?= $column ?>')" class="extra_item">
@@ -31,7 +40,7 @@ foreach (getColumns($table) as $column)
                 <option>avg</option>
             </select>
         </div>
-    </div>
+    </span></div>
 <?php
 }
 ?>

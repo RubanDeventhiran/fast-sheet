@@ -110,7 +110,7 @@ span {
     outline:none;
 }
 
-#signin .login_button, .restrict-button, #edit_button, #confirm_query_form .submit-query-button {
+#signin .login_button, .restrict-button, #edit_button, .remove-where-clause-button, #confirm_query_form .submit-query-button {
     border:none;
     background-color:#009ad7;
     color:white;
@@ -246,9 +246,26 @@ span {
     display:block;
 }
 
+.selection_option {
+    border:none;
+    background-color:#e0e0e0;
+    color:black;
+    padding:3px;
+    margin:3px;
+    min-width:100px;
+    border-radius:6px;
+    -webkit-border-radius:6px;
+    font-weight:800;
+    cursor:pointer;
+}
+
 .extra_item {
-    height:24px;
+    height:26px;
     padding:0px;
+}
+
+#where_clauses {
+    padding-bottom:10px;
 }
 
 .where-clause {
@@ -290,10 +307,30 @@ span {
     background-image:url("../images/edit_query.png");
 }
 
+.remove-where-clause-button {
+    background-image:url("../images/remove_where_clause.png");
+    padding-left:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.limit_name {
+    font-size:12px;
+    text-transform: uppercase;
+}
+
+#limit {
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    padding:8px;
+    border:1px solid #bbbdbe;
+}
+
 #confirm_query_form .submit-query-button {
     margin:10px;
     border-radius:8px;
     -webkit-border-radius:8px;
     background-image:url("../images/continue_arrow.png");
+    font-size:20px;
 }
 

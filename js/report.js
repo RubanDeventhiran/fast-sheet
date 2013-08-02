@@ -3,26 +3,45 @@
  * Does not directly change the model maintained in the_query.js.
  */
 
+function toggle(elem, flag) {
+    if (flag) {
+        elem.css('background-color', '#00aae7');
+        elem.css('color', 'white');
+    } else {
+        elem.css('background-color', '#e0e0e0');
+        elem.css('color', 'black');
+    }
+}
+
+var table_toggled = new Array();
 function toggle_table(table) {
-    if ($('#table_' + table).attr('checked')) {
+    if (!table_toggled[table]) {
         $('.table_class_' + table).show();
+        table_toggled[table] = true;
         addTable(table);
     } else {
         $('.table_class_' + table).hide();
         removeTable(table);
+        table_toggled[table] = false;
     }
+    toggle($('#table_' + table), table_toggled[table]);
 };
 
+var column_toggled = new Array();
 function toggle_column(table, column) {
-  if ($('#column_' + table + '__' + column).attr('checked')) {
-    $('#columnfunctiondiv_' + table + '__' + column).show();
-    $('.column_class_' + table + '__' + column).show();
-    addColumn(table, column);
-  } else {
-    $('#columnfunctiondiv_' + table + '__' + column).hide();
-    removeColumn(table, column);
-    $('.column_class_' + table + '__' + column).hide();
-  }
+    var fullColumn = table + '__' + column;
+    if (!column_toggled[fullColumn]) {
+        $('#columnfunctiondiv_' + fullColumn).show();
+        $('.column_class_' + fullColumn).show();
+        addColumn(table, column);
+        column_toggled[fullColumn] = true;
+    } else {
+        $('#columnfunctiondiv_' + fullColumn).hide();
+        removeColumn(table, column);
+        $('.column_class_' + fullColumn).hide();
+        column_toggled[fullColumn] = false;
+    }
+    toggle($('#column_' + fullColumn), column_toggled[fullColumn]);
 };
 
 function toggle_columnfunction(table, column) {
@@ -55,7 +74,7 @@ function createWhereClause(table, column) {
   elem += '  <input id="whereclauserhs_' + createWhereClauseId + '" type="text" onkeyup="edit_whereclause(' + createWhereClauseId + ')" class="text-field">';
   elem += '</div>';
   elem += '<div class="where-remove">';
-  elem += '  <button type="button" onclick="remove_whereclause(' + createWhereClauseId + ')">Remove</button>';
+  elem += '  <button type="button" onclick="remove_whereclause(' + createWhereClauseId + ')" class="remove-where-clause-button">Remove</button>';
   elem += '</div>';
   elem += '</div>';
   $('#where_clauses').append(elem);
@@ -79,20 +98,30 @@ function edit_whereclause(id) {
   editWhereClause(id, lhs.value, op.options[op.selectedIndex].text, rhs.value);
 };
 
+var columnsort_toggled = new Array();
 function toggle_columnsort(table, column) {
   var obj = document.getElementById('columnsorttype_' + table + '__' + column);
   var type = null;
   if (obj.selectedIndex) {
       type = obj.options[obj.selectedIndex].text;
   }
-  if ($('#columnsort_' + table + '__' + column).attr('checked')) {
-      $('#columnsortdiv_' + table + '__' + column).show();
+  var fullColumn = table + '__' + column;
+  if (!columnsort_toggled[fullColumn]) {
+      $('#columnsortdiv_' + fullColumn).show();
       editColumnSort(table, column, type);
+      columnsort_toggled[fullColumn] = true;
   } else {
-      $('#columnsortdiv_' + table + '__' + column).hide();
+      $('#columnsortdiv_' + fullColumn).hide();
       removeColumnSort(table, column);
+      columnsort_toggled[fullColumn] = false;
   }
-};
+  toggle($('#columnsort_' + fullColumn), columnsort_toggled[fullColumn]);
+}
+
+function change_columnsort(table, column) {
+    var obj = document.getElementById('columnsorttype_' + table + '__' + column);
+    editColumnSort(table, column, obj.options[obj.selectedIndex].text);
+}
 
 function edit_limit() {
   var obj = document.getElementById('limit');

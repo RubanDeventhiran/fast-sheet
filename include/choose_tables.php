@@ -29,9 +29,7 @@ foreach ($tables as $table)
 foreach ($tables as $table)
 {
 ?>
-  <div class="table_list_item">
-      <input type="checkbox" id="table_<?= $table ?>" onclick="toggle_table('<?= $table ?>')"> <?= $table ?>
-  </div>
+  <div class="table_list_item selection_option" id="table_<?= $table ?>" onclick="toggle_table('<?= $table ?>')"> <?= $table ?> </div>
 <?php
 }
 ?>

@@ -11,7 +11,14 @@
 <div class="report_section_title">Select where clauses</div>
 <div class="report_section_description">Click on a button to apply a restriction on the data in that column</div>
 
-<span>
+<!-- List of where clauses -->
+<div id="where_clauses">
+</div>
+
+<div class="tables_list_section">
+    <button type="button" onclick="createWhereClause()" class="restrict-button">Arbitrary Restrict</button>
+</div>
+
 <div class="tables_list_section">
 <?php
 foreach ($tables as $table)
@@ -38,12 +45,4 @@ foreach (getColumns($table) as $column)
 <?php
 }
 ?>
-</div>
-</span>
-<div id="tables_list_section">
-    <button type="button" onclick="createWhereClause()" class="restrict-button">Arbitrary Restrict</button>
-</div>
-
-<!-- List of where clauses -->
-<div id="where_clauses">
 </div>

@@ -11,7 +11,7 @@
   <fieldset>
     <input type="hidden" id="query_field" name="query_field" value="" />
     <div class="submit-button">
-        <input type="submit" name="submit" value="Submit Query!" class="submit-query-button" \>
+        <input type="submit" name="submit" value="Submit Query" class="submit-query-button" \>
     </div>
   </fieldset>
 </form>
